@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors');
 const rutasUsuarios = require('./routes/usuarios.routes');
+const { dbConnection } = require('./database/config');
 require('dotenv').config()
 const app = express();
 const PORT = process.env.PORT;
@@ -14,7 +15,8 @@ app.get("/", function (req, res) {
     res.send("API v1.0");
 });
 
-(()=>{
+(async () => {
+    await dbConnection();
     const rutaBase = '/api/v1';
     app.use(rutaBase, rutasUsuarios);
 })();
