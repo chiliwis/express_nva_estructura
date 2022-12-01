@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const dbConnection = async () => {
     try {
-        await mongoose.connect("mongodb+srv://noolvidar:noolvidar@cluster0.psdkwbx.mongodb.net/test", { useNewUrlParser: true, useUnifiedTopology: true });
+        await mongoose.connect(process.env.MONGODB_CNN);
 
         console.log('Base de datos online');
     } catch (error) {
